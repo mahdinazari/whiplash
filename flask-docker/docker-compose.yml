@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    image: "myapp:v1"
+    container_name: "myapp"
+    ports:
+      - "5000:5000"
+
+  redis:
+    image: "redis:latest"
+    container_name: "redis"
+    volumes: 
+      - "/tmp/data:/data"
+
