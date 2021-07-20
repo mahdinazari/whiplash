@@ -5,3 +5,5 @@ A repository for practice results.
 - flask-docker
 - flask-celery
 - asyncio
+- threading
+
