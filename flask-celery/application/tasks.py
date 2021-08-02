@@ -20,3 +20,16 @@ def add(x, y):
 def mul(x, y):
     return x * y
 
+@celery.task
+def hello():
+    print("Run Period Task Hello")
+
+
+celery.conf.beat_schedule = {
+    'SAY-HELLO-EVERY-30-SECOND': {
+        'task': 'tasks.hello',
+        'schedule': 30.0,
+        'args': (1, 2)
+    }
+}
+
