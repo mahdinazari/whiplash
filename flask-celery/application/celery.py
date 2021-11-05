@@ -1,8 +1,8 @@
 from celery import Celery
 
 
-celery = Celery('application')
-celery.config_from_object('application.celery_config')
+celery = Celery('tasks')
+celery.config_from_object('application.celeryconfig')
 
 
 if __name__ == '__main__':

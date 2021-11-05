@@ -8,7 +8,7 @@ Implement `flask` application with `celery`.
 
 or 
 ```
-celery -A application worker -Q queue1,queue2,queue3 --loglevel=INFO
+celery -A application worker -Q celery,queue1,queue2,queue3 --loglevel=INFO
 ```
 
 ### Run flask

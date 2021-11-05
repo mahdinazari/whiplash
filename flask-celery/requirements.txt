@@ -1,3 +1,5 @@
-celery
 flask
+celery
 redis
+flask-SQLAlchemy
+psycopg2
