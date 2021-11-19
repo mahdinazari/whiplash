@@ -1,7 +1,15 @@
 import os
 
+from dotenv import load_dotenv
+
+
+
 
 class Config:
+    dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+    if os.path.exists(dotenv_path):
+        load_dotenv(dotenv_path)
+
     DEBUG = False
     SECRET_KEY = os.environ.get('SECRET_KEY', 'ASDASDOWIQ!@&EQHC<XNYWGYW#!@')
     SQLALCHEMY_DATABASE_URI = os.environ.get('PRODUCTION_DATABASE_URL')
