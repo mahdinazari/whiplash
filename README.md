@@ -19,3 +19,4 @@ A repository for practice results.
 - asyncio
 - FastAPI
 - Python + Apache kafka
+- Websocket(need to compelete)
