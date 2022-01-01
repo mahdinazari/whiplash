@@ -6,3 +6,4 @@ A repository for practice results.
 - flask-celery
 - asyncio
 - FastAPI
+- Websocket(need to compelete)
