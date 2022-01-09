@@ -1,6 +1,7 @@
 import json
 
 from websocket_server import WebsocketServer
+from redis_client import lpush
 
 
 class WebSocketManager:
@@ -22,6 +23,7 @@ class WebSocketManager:
 
     def _ws_recv_message(self, client, server, message):
         msg = json.loads(message)
+        lpush('Client1', msg)
         print(msg)
 
     def _ws_close_client(self, client, server):
