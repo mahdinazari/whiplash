@@ -2,26 +2,16 @@ import json
 
 from websocket_server import WebsocketServer
 
-from websocket_handlers import Dispature, NormalPrintHandler, \
-    UploadPrintHandler
-
 
 class WebSocketManager:
     def __init__(self, host, port):
-
         self.ws_port = port
         self.ws_host = host
         self.ws_server = None
         self.ws_clients = []
-        self.dispature = Dispature(
-            [
-                NormalPrintHandler(),
-                UploadPrintHandler()
-            ]
-        )
 
     def start_websocket(self):
-        print('begin the socket')
+        print('Websocket Has Been Started ...')
         self.ws_server = WebsocketServer(self.ws_port, host=self.ws_host)
         self.ws_server.set_fn_new_client(self._ws_new_client)
         self.ws_server.set_fn_message_received(self._ws_recv_message)
@@ -33,7 +23,6 @@ class WebSocketManager:
     def _ws_recv_message(self, client, server, message):
         msg = json.loads(message)
         print(msg)
-        self.dispature.consume(msg)
 
     def _ws_close_client(self, client, server):
         self.ws_clients.remove(client)
@@ -43,6 +32,7 @@ class WebSocketManager:
         if self.ws_server:
             try:
                 self.ws_server.send_message_to_all(message)
+
             except Exception as e:
                 print("ws_send_message", str(e))
 

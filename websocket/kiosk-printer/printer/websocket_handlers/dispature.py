@@ -1,9 +1,7 @@
 import re
 
 
-
 class Dispature:
-
     def __init__(self, handlers):
         self.handlers = handlers
         self.message = None
@@ -21,4 +19,3 @@ class Dispature:
 
         except Exception as e:
             print(e)
-

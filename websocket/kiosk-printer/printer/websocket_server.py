@@ -49,8 +49,7 @@ OPCODE_PONG = 0xA
 
 # -------------------------------- API ---------------------------------
 
-class API():
-
+class API:
     def run_forever(self):
         try:
             logger.info("Listening on port %d for clients.." % self.port)
@@ -161,7 +160,6 @@ class WebsocketServer(ThreadingMixIn, TCPServer, API):
 
 
 class WebSocketHandler(StreamRequestHandler):
-
     def __init__(self, socket, addr, server):
         self.server = server
         StreamRequestHandler.__init__(self, socket, addr, server)
