@@ -1,7 +1,9 @@
 import json
 
+from config import Config
+from dispature import Dispature
+from message_handler import MessageHandler
 from websocket_server import WebsocketServer
-from redis_client import lpush
 
 
 class WebSocketManager:
@@ -10,6 +12,11 @@ class WebSocketManager:
         self.ws_host = host
         self.ws_server = None
         self.ws_clients = []
+        self.dispature = Dispature(
+            [
+                MessageHandler(),
+            ]
+        )
 
     def start_websocket(self):
         print('Websocket Has Been Started ...')
@@ -23,8 +30,7 @@ class WebSocketManager:
 
     def _ws_recv_message(self, client, server, message):
         msg = json.loads(message)
-        lpush('Client1', msg)
-        print(msg)
+        self.dispature.consume(msg)
 
     def _ws_close_client(self, client, server):
         self.ws_clients.remove(client)
@@ -40,5 +46,5 @@ class WebSocketManager:
 
 
 if __name__ == '__main__':
-    web_socket = WebSocketManager('0.0.0.0', 9989)
+    web_socket = WebSocketManager(Config.HOST, Config.PORT)
     web_socket.start_websocket()

@@ -14,8 +14,12 @@ r = redis.Redis(
 
 def lpush(queue, message):
     try:
-        message = json.loads(message)
-        r.lpush(queue, message)
+        r.lpush(queue, json.dumps(message))
 
     except Exception as e:
         print(f'Push Exception - {e}')
+
+
+def get_message_by_id(member_id, start=0, end=-1):
+    messages = r.lrange(member_id, start, end)
+    return messages

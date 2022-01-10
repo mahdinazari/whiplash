@@ -1,5 +1,5 @@
 redis
 tqdm
-dotenv
+python-dotenv
 ipython
 pudb

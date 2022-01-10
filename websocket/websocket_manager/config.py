@@ -3,6 +3,9 @@ import json
 
 
 class Config:
+    HOST = '0.0.0.0'
+    PORT = 9989
+
     # Redis
     REDIS_HOST = os.environ.get('REDIS_HOST', '127.0.0.1')
     REDIS_PORT = os.environ.get('REDIS_PORT', 6379)
