@@ -9,25 +9,30 @@ def calculate_time(func):
         start_time = time.time()
         func(*args, **kwargs)
         end_time = time.time() - start_time
+        end_time = '{0:02.0f}:{1:02.0f}'.format(*divmod(end_time * 60, 60))
         print("Total time is %s" %end_time)
+    
+    return inner
 
 @calculate_time
 def factorial(num):
-    time.sleep(2)
-    print(math.factorial(num))
+    time.sleep(2.3)
+    print('Factorial Result: ', math.factorial(num))
 
 
-# Chaim decorators
+# Chain decorators
 def decor1(func):
     def inner():
         x = func()
         return x * x
+
     return inner
 
 def decor(func):
     def inner():
         x = func()
         return 2 * x
+
     return inner
 
 @decor1
@@ -44,14 +49,15 @@ def decorator(*args, **kwargs):
         if kwargs['like'] == 'geeksforgeeks':
             print("I like", kwargs['like'])
             func()
+            
         else:
             func()
 
     return inner
 
-@decorator(like = "geeksforgeeks")
+@decorator(like="geeksforgeeks")
 def func_with_input():
-    print("Inside actual function")
+    return "Inside actual function"
 
 
 # Decorator with functools
@@ -65,5 +71,7 @@ def decorator(func):
 
 if __name__ == '__main__':
     factorial(10)
+    print(10 * '-')
     print(num())
+    print(10 * '-')
     func_with_input()
