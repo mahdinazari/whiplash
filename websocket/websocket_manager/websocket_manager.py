@@ -1,5 +1,6 @@
 import json
 
+from redis_client import r
 from config import Config
 from dispature import Dispature
 from message_handler import MessageHandler
@@ -29,7 +30,9 @@ class WebSocketManager:
         self.ws_clients.append(client)
 
     def _ws_recv_message(self, client, server, message):
+        import pudb; pudb.set_trace()
         msg = json.loads(message)
+        user = r.hgetall("user")
         self.dispature.consume(msg)
 
     def _ws_close_client(self, client, server):
