@@ -18,4 +18,6 @@ A repository for practice results.
 - flask-celery
 - asyncio
 - FastAPI
+- kafka
 - Python + Apache kafka
+- aoihttp + argparser
