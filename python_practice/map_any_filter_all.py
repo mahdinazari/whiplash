@@ -68,3 +68,8 @@ print(any([x % 2 != 0 for x in numbers])) # True
 # ***********************************
 # *************** zip ***************
 # ***********************************
+print(20 * '*')
+name = [ "Manjeet", "Nikhil", "Shambhavi", "Astha" ]
+roll_no = [ 4, 1, 3, 2 ]
+mapped = zip(name, roll_no)
+print(set(mapped)) # {('Shambhavi', 3), ('Nikhil', 1), ('Astha', 2), ('Manjeet', 4)}
