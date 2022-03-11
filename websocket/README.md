@@ -9,5 +9,8 @@ npm install -g wscat
 
 #### Call websocket
 ```
-wscat -c ws://localhost:9989/  w 1 -x '{"sender": "client1", sender_id": 1, "type": "seen", "message": "helloWorld", "receiver_id": 2, "direct": 1}'
+wscat -c ws://localhost:9989/  w 1 -x '{"sender": "client1", "sender_id": 1, "type": "seen", "message": "helloWorld", "receiver_id": 2, "direct": 1}'
+```
+```
+wscat -c ws://localhost:9989/  w 1 -x '{"sender": "client2", "sender_id": 2, "type": "seen", "message": "helloWorld", "receiver_id": 1, "direct": 1}'
 ```

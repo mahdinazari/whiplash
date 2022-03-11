@@ -23,3 +23,12 @@ def lpush(queue, message):
 def get_message_by_id(member_id, start=0, end=-1):
     messages = r.lrange(member_id, start, end)
     return messages
+
+
+def lpop(queue):
+    try:
+        r.lpop(queue)
+        
+    except Exception as e:
+        print('Pop Exception - %e')
+        

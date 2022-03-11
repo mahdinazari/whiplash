@@ -33,6 +33,7 @@ def client_handler(connection, address):
 while True:
     print('server is listening')
     connection, address = server.accept()
+    import pudb; pudb.set_trace()
     t = Thread(
         target=client_handler,
         kwargs={'connection': connection, 'address': address}
