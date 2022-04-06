@@ -19,3 +19,5 @@ A repository for practice results.
 - asyncio
 - FastAPI
 - Python + Apache kafka
+- Design patterns
+- Event driven
