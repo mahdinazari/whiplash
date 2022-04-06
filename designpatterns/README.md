@@ -16,4 +16,3 @@ In this design pattern, client creates a command object that includes a list of 
 - Strategy
 The strategy pattern is a type of behavioral pattern. The main goal of strategy pattern is to enable client to choose from different algorithms or procedures to complete the specified task. Different algorithms can be swapped in and out without any complications for the mentioned task.
 This pattern can be used to improve flexibility when external resources are accessed.
-
