@@ -1,7 +1,7 @@
-import time
+from datetime import datetime
 import requests
 import threading
-import concurrent.features
+from concurrent import futures
 
 
 local_thread = threading.local()
@@ -19,7 +19,7 @@ def download_site(url):
         print(f"Read {len(response.content)} from {url}")
 
 def download_all(sites):
-    with concurrent.features.ThreadPoolExecutor(max_workers=5) as executor:
+    with futures.ThreadPoolExecutor(max_workers=5) as executor:
         executor.map(download_site, sites)
 
 
@@ -29,8 +29,8 @@ if __name__ == '__main__':
         "http://olympus.realpython.org/dice",
     ] * 80
 
-    start_time = time.now()
+    start_time = datetime.now()
     download_site(sites)
-    duration = time.now() - start_time
+    duration = datetime.now() - start_time
     print(f"Downloaded {len(sites)} in {duration} seconds")
 
