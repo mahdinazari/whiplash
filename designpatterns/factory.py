@@ -32,13 +32,24 @@ class Local(ILogin):
 
 
 class LoginFactory:
-    def __init__(self, username, password):
+    TYPES = {
+        'Google': Google,
+        'Github': Github,
+        'Local': Local,
+    }
+    
+    def __init__(self, type_, username, password):
         self.username = username
         self.password = password
-
-    def create_object(self, type_):
-        obj = eval(type_)(self.username, self.password)
+        self.type_ = type_
+        
+    def create_object(self):
+        if self.type_ not in LoginFactory.TYPES.keys():
+            print('Invalid Type')
+            return 
+        
+        obj = LoginFactory.TYPES[self.type_](self.username, self.password)
         return obj
 
-login_factory = LoginFactory('username', 'password')
-login_factory.create_object('Google').authenticate()
+login_factory = LoginFactory('Google', 'username', 'password').create_object()
+login_factory.authenticate()
